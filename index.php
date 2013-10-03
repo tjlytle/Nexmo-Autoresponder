@@ -4,8 +4,8 @@
  * @author Tim Lytle <tim@timlytle.net>
  */
 
-defined('NEXMO_KEY') || (getenv('NEXMO_KEY') AND define('NEXMO_KEY', getenv('NEXMO_KEY')));
-defined('NEXMO_SECRET') || (getenv('NEXMO_SECRET') AND define('NEXMO_SECRET', getenv('NEXMO_SECRET')));
+define('NEXMO_KEY', $_SERVER['NEXMO_KEY']);
+define('NEXMO_SECRET', $_SERVER['NEXMO_SECRET']);
 
 //request looks to be from Nexmo
 $request = array_merge($_GET, $_POST); //method configurable via Nexmo API / Dashboard
