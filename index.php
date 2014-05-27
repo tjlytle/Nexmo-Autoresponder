@@ -18,7 +18,11 @@ if(isset($request['msisdn'], $request['text'])){
             $request['to'],
             $request['msisdn'],
             urlencode($text));
-        $result = file_get_contents($uri);
+
+        $ch = curl_init($uri);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+        curl_close($ch);
         error_log($result);
     } catch (Exception $e) {
         error_log($e); //NOTE: if you want Nexmo to retry, just give a non-2XX response
